@@ -1,8 +1,35 @@
 <html>
   <head>
-    <script src="app.js"></script>
+    <script type="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   </head>
   <body>
-    <p>All the action is in the console!</p>
+    <div id="app">
+      <p id='bankroll'>Current Bankroll: 100</p>
+      <form class="" action="index.html" method="post">
+        <p>How much would you like to bet</p>
+        <!-- <input id="five" type="radio" name="five" value="5">$5
+        <input id="ten" type="radio" name="ten" value="10">$10 -->
+        <select id="bet" name="bet">
+          <option value="5">$5</option>
+          <option value="10">%10</option>
+        </select>
+        <p>What is your answer?</p>
+        <select id="answer" name="answer">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select><br>
+        <button id="placebet" type="button">Place Bet</button>
+      </form>
+      <button id="reset" type="button">Reset</button>
+    </div>
+    <script src="app.js"></script>
   </body>
 </html>

@@ -1,21 +1,43 @@
-var bankroll = 100;
+var bankroll = document.getElementById('bankroll')
+var total = 100;
+var bet;
+
+document.querySelector("#placebet").addEventListener("click", app);
+document.querySelector('#reset').addEventListener('click', reload)
 
 function app(){
-  do {
-    var bet = prompt("How much would you like to bet: $5 or $10")
-    console.log(bet);
-  } while(bet != 5 && bet != 10)
-  do {
-    var answer = prompt("Choose a Number Between 1-10")
-  } while (isNaN(answer) || answer < 1 || answer > 10);
+  checkForResults()
 
+  var para = document.createElement('P')
+  para.id = 'result'
   var result = Math.floor(Math.random(10)*10)+1
+  console.log(result);
 
-  if (answer == result){
-    bankroll += bet
-    alert("YOUR RIGHT")
+  var answer = document.getElementById('answer').value
+  var bet = parseInt(document.getElementById('bet').value)
+
+  if (answer == result) {
+    total += bet
+    var text = document.createTextNode("Congratz Your RIGHT!")
+  } else if (Math.abs(answer - result) == 1) {
+    var text = document.createTextNode("Close but not quite")
   } else {
-    bankroll -= bet
-    alert("Answer was " + result + " \nThanks for the $" + bet + ". Try again next time!!")
+    total -= bet
+    var text = document.createTextNode("Answer was " + result + ". Thanks for the $" + bet + ". Try again next time")
   }
+
+  para.appendChild(text)
+  bankroll.innerText = ("Current Bankroll: " + total)
+  document.getElementById('app').appendChild(para)
+}
+
+function checkForResults(){
+  var exists = document.getElementById('result')
+  if (exists != null){
+    document.getElementById('app').removeChild(exists)
+  }
+}
+
+function reload(){
+  document.location.reload()
 }
